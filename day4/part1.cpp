@@ -27,7 +27,7 @@ public:
     vector<vector<int>> grid;
     unordered_map<int,int> row_count; // row[i] = how many numbers are marked on row i
     unordered_map<int,int> col_count;
-    unordered_map<int,ii> s;
+    unordered_map<int,ii> s; // s[x] = position (i,j) of number x
     int totalSum;
     int SIZE;
     int winnerCol;
