@@ -1,13 +1,9 @@
 #include <iostream>
 #include <stdio.h>
 #include <vector>
-#include <cmath>
-#include <map>
-#include <algorithm>
-#include <unordered_map>
 using namespace std;
-typedef unsigned long long ull;
 const int INF = 1e9 + 8;
+
 vector<int> parseInput(string str){
     vector<int> tmp;
     int a = 0;
@@ -36,8 +32,6 @@ int main(){
         nums.push_back(x);
         mx = max(x,mx);
     }
-    sort(begin(nums),end(nums));
-    unordered_map<int,int> mp;
     int ans = INF;
     for(int i=0;i<=mx;i++){
         int curr = 0;
