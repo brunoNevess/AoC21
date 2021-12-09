@@ -40,8 +40,8 @@ int main(){
     priority_queue<int, vector<int>, greater<int>> pq; // min heap to store 3 largest values
     for(int i = 0; i < N; i++){
         for(int j = 0;j < M; j++){
-            if(!vis[i][j]){
-                int area = 0;
+            if(!vis[i][j] && g[i][j] != 9){
+                int area = 1;
                 dfs(g,i,j,vis,area);
                 pq.push(area);
                 if(pq.size() > 3) pq.pop();
