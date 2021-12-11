@@ -23,15 +23,7 @@ struct Grid {
             row++;
         }
 	}
-
-    void increase(){ // increase all cells by one
-        for(int i=0;i<N;i++) {
-            for(int j=0;j<N;j++){
-                grid[i][j]++;
-            } 
-        }
-    }
-
+    
     bool isSync(){ // check if all cells are flashes
         for(int i=0;i<N;i++) {
             for(int j=0;j<N;j++) {
@@ -41,10 +33,22 @@ struct Grid {
         return true;
     }
 
+    void increase(){ // increase all cells by one
+        for(int i=0;i<N;i++) {
+            for(int j=0;j<N;j++){
+                grid[i][j]++;
+            } 
+        }
+    }
+
 	int bfs(){
         increase();
         queue<ii> q;
-        for(int i=0;i<N;i++) for(int j=0;j<N;j++) if(grid[i][j] == 10) q.push((ii(i,j))); // insert all 10's first in queue for processing
+        for(int i=0;i<N;i++){
+            for(int j=0;j<N;j++){
+                if(grid[i][j] == 10) q.push((ii(i,j))); // insert all 10's first in queue for processing
+            }
+        }
         int explosions = q.size();
         while(!q.empty()){
             ii next = q.front(); q.pop();
@@ -60,9 +64,14 @@ struct Grid {
                 }
             }
         }
-        for(int i=0;i<N;i++) for(int j=0;j<N;j++) if(grid[i][j] >= 10) grid[i][j] = 0; // reset all greater than 10 to 0
+        for(int i=0;i<N;i++){
+            for(int j=0;j<N;j++){
+                if(grid[i][j] >= 10) grid[i][j] = 0; // reset all greater than 10 to 0
+            }
+        }
         return explosions;
     }
+
 };
 
 int main(){
