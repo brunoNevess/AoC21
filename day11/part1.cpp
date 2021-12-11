@@ -10,6 +10,7 @@ typedef pair<int,int> ii;
 
 struct Grid {
 	vector<vector<int>> grid; 
+    
 	void read() { 
         grid = vector<vector<int>>(N,vector<int>(N));
         int row = 0;
@@ -22,13 +23,24 @@ struct Grid {
             row++;
         }
 	}
+
     void increase(){ // increase all cells by one
-        for(int i=0;i<N;i++) for(int j=0;j<N;j++) grid[i][j]++;
+        for(int i=0;i<N;i++) {
+            for(int j=0;j<N;j++){
+                grid[i][j]++;
+            } 
+        }
     }
+
     bool isSync(){ // check if all cells are flashes
-        for(int i=0;i<N;i++) for(int j=0;j<N;j++) if(grid[i][j] != 0) return false;
+        for(int i=0;i<N;i++) {
+            for(int j=0;j<N;j++) {
+                if(grid[i][j] != 0) return false;
+            }
+        }
         return true;
     }
+
 	int bfs(){
         increase();
         queue<ii> q;
@@ -41,7 +53,7 @@ struct Grid {
                 int nx = x + dx[k], ny = y + dy[k];
                 if(isValid(nx,ny)){
                     grid[nx][ny]++;
-                    if(grid[nx][ny] == 10) { // we only care for cells that explodes once
+                    if(grid[nx][ny] == 10) { // we only care for cells that flashes once
                         explosions++;
                         q.push(ii(nx,ny));
                     }
@@ -56,14 +68,14 @@ struct Grid {
 int main(){
     Grid g;
     g.read();
-    int explosions = 0;
-    int steps = 0;
-    int i = 0;
+    int flashes = 0, steps = 1,part1 = -1;
     while(!g.isSync()){
-        explosions += g.bfs();
+        flashes += g.bfs();
+        if(steps == 100) part1 = flashes;
         steps++;
     }
-    cout << "Part1: " << explosions << endl;
+    cout << "Part1: " << part1 << endl;
     cout << "Part2: " << steps << endl;
+    cout << "Total flashes in " << steps << " steps: " << flashes << endl;
     return 0;
 }
