@@ -5,6 +5,7 @@ using namespace std;
 int N = 10;
 vector<int> dx = {0,0,1,-1,1,-1,1,-1};
 vector<int> dy = {-1,1,0,0,1,-1,-1,1};
+
 bool isValid(int i,int j){return i >=0 && i < N && j >=0 && j < N;}
 typedef pair<int,int> ii;
 
