@@ -10,7 +10,7 @@ typedef pair<int,int> ii;
 
 struct Grid {
 	vector<vector<int>> grid; 
-    
+
 	void read() { 
         grid = vector<vector<int>>(N,vector<int>(N));
         int row = 0;
