@@ -5,13 +5,14 @@ using namespace std;
 int N = 10;
 vector<int> dx = {0,0,1,-1,1,-1,1,-1};
 vector<int> dy = {-1,1,0,0,1,-1,-1,1};
+
 bool isValid(int i,int j){return i >=0 && i < N && j >=0 && j < N;}
 typedef pair<int,int> ii;
 
 struct Grid {
-	vector<vector<int>> grid; 
+    vector<vector<int>> grid; 
 
-	void read() { 
+    void read() { 
         grid = vector<vector<int>>(N,vector<int>(N));
         int row = 0;
         while(!cin.eof()){
@@ -22,7 +23,7 @@ struct Grid {
             }
             row++;
         }
-	}
+    }
     
     bool isSync(){ // check if all cells are flashes
         for(int i=0;i<N;i++) {
@@ -41,7 +42,7 @@ struct Grid {
         }
     }
 
-	int bfs(){
+    int bfs(){
         increase();
         queue<ii> q;
         for(int i=0;i<N;i++){
@@ -71,7 +72,6 @@ struct Grid {
         }
         return explosions;
     }
-
 };
 
 int main(){
