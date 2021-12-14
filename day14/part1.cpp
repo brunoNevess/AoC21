@@ -75,4 +75,7 @@ int main(){
     read();
     solve(10);
     solve(40);
+    solve(100);
+    solve(200);
+    solve(400);
 }
