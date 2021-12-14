@@ -43,12 +43,15 @@ struct Grid {
         } 
     }
 
+     // reflect just "transports" points to the right of the horizontal/vertical line to the left
+    // make two pointers walk in opposite directions
+
     void reflect(char c, int p){
         if(c == 'x'){
             for(int row = 0;row<N;++row){
                 int left,right;
                 left = right = p;
-                for(int j = 0;j < N ;j++) grid[j][p] = '.';
+                for(int j = 0;j < N ;j++) grid[j][p] = '.'; // folded line
                 while(left >= 0 && right < N){
                     if(grid[row][right] == '#'){
                         grid[row][left] = '#';
@@ -61,7 +64,7 @@ struct Grid {
             for(int col = 0;col<N;++col){
                 int up,down;
                 up = down = p;
-                for(int j = 0;j < N ;j++) grid[p][j] = '.';
+                for(int j = 0;j < N ;j++) grid[p][j] = '.'; // folded line
                 while(up >= 0 && down< N){
                     if(grid[down][col] == '#'){
                         grid[up][col] = '#';
