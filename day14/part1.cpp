@@ -29,7 +29,7 @@ void read(){
 
 //for every rule, for example NC->B, increase count of NB and CB (generated) and delete NC
 //how much to inc ? by the current count of NC
-//and for each rule , increase B by how many times NC is counted
+//and for each rule , increase B by how many times NC is counted , and the pairs NB and CB by the same amount
 void gen(unordered_map<char,ull>& cnt, unordered_map<string,ull>& pairCount){ 
     vector<string> toErase;
     vector<si> toAdd;
