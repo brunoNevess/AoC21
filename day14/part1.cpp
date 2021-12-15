@@ -78,8 +78,5 @@ int main(){
     solve(100);
     solve(200);
     solve(400);
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 104e48b47e5ec01c9002e2abd4578b358a8a64b7
+
