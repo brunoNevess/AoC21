@@ -1,4 +1,4 @@
-// if the problem only allowed left,down movements , it could be solved by the following: 
+// if the problem only allowed right,down movements , it could be solved by the following: 
 // vector<vector<int>> dp(N,vector<int>(M,INT_MAX));
 // dp[0][0] = 0;
 // for(int i = 1 ; i < M;i++) dp[0][i] = g[0][i] + dp[0][i-1];
