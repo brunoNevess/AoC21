@@ -65,9 +65,35 @@ vector<int> djs(){
     return d;
 }
 
+// Bellman-Ford-Moore algo , works with negative edges
+vector<int> fastBellman(){
+    int V = N*M; // total vertices
+    vector<int> dist(V,INT_MAX); dist[0] = 0; // initial vertex has dist 0
+    queue<int> q; q.push(0); // queue of processing vertexes
+    vector<bool> in_queue(V,0); in_queue[0] = true; // fast lookup to see whos in queue , inititally has vertex 0
+    while(!q.empty()){
+        int u = q.front(); q.pop(); in_queue[u] = false;
+        int x = u/M; int y = u%M;// get positions
+        for(int k = 0 ; k < 4 ; k++){ // for every neighbour...
+            int nx = x + dx[k]; int ny = y + dy[k];
+            if(isValid(nx,ny)){ // inside grid
+                int v = id(nx,ny), w = g[nx][ny]; // get its number and weight
+                if(dist[u] + w >= dist[v]) continue; // cannot improve , skip
+                dist[v] = dist[u] + w;
+                if(in_queue[v]) continue; // already in queue, skip
+                q.push(v);
+                in_queue[v] = true;                
+            }
+        }
+    }
+    return dist;
+}
+
 
 int main(){
     buildGraph();
     vector<int> d = djs();
+    cout << d[id(N-1,M-1)] << endl;
+    vector<int> d = fastBellman();
     cout << d[id(N-1,M-1)] << endl;
 }
