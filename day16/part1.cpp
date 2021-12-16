@@ -15,7 +15,6 @@ ull binToInt(string bin){ // binary string to to int
 struct Packet {
     ull id,version,val;
     vector<Packet> subPackets; // if its an operator , save its sub packets
-    ull eval;
     bool read(string& bin,int& i){ // i is the pointer of the outermost package
         if(i + 5 >= bin.size()) return false;
         string sversion  = ""; sversion += bin[i]; sversion += bin[i+1]; sversion += bin[i+2];
