@@ -5,9 +5,6 @@ typedef long long int ull;
 
 int xmin,xmax,ymin,ymax; // target area
 
-bool isInside(int x,int y){return x >= xmin && x <= xmax && y >= ymin && y <= ymax;}
-bool isAtRest(int vx,int vy){return vx == 0 && vy == 0;}
-
 void movex(int& x,int &v){ 
     x += v;
     if(v > 0) v -= 1;  // drag
